@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import customersAPI from "../services/customersAPI";
 
@@ -18,7 +19,9 @@ const CustomersPage = (props) => {
   };
 
   // Au chargement du composant, on va chercher les customers
-  useEffect(() => {fetchCustomers()}, []);
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
 
   // Gestion de la suppression d'un customer
   const handleDelete = async (id) => {
@@ -62,7 +65,12 @@ const CustomersPage = (props) => {
 
   return (
     <>
-      <h1>Liste des Clients</h1>
+      <div className="mb-3 d-flex justify-content-between align-items-center">
+        <h1>Liste des Clients</h1>
+        <Link to="/customers/new" className="btn btn-primary">
+          Créer un client
+        </Link>
+      </div>
 
       <div className="form-group">
         <input
